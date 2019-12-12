@@ -12,7 +12,9 @@ module.exports = {
     },
     seeds: {
       directory: './data/recipeSeeds'
-    }
+    },
+    useNullAsDefault: 'true',
+    
   },
 
   
