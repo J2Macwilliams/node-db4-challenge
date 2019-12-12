@@ -7,10 +7,10 @@ module.exports = {
 			filename: './data/recipes.db3'
 		},
 		migrations: {
-			directory: './data/addRecipesTable'
+			directory: './data/migrations'
 		},
 		seeds: {
-			directory: './data/recipeSeeds'
+			directory: './data/seeds'
 		},
 		useNullAsDefault: 'true',
 		pool: {
