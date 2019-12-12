@@ -4,11 +4,23 @@ exports.up = function(knex) {
 			tbl.increments();
 			tbl.string('recipe_name', 128).notNullable();
 		})
+
 		.createTable('ingredients', tbl => {
 			tbl.increments();
 			tbl.string('ingredient_name', 255).notNullable();
-        })
-        
+		})
+
+		.createTable('instructions', tbl => {
+			tbl.increments();
+			tbl.integer('step_number').notNullable();
+			tbl.string('instruction_step').notNullable();
+			tbl
+				.integer('recipe_id')
+				.unsigned()
+				.notNullable()
+				.references('id')
+				.inTable('recipes');
+		})
 		.createTable('recipe_detail', tbl => {
 			tbl.primary(['recipes_id', 'ingredients_id', 'instruction_id']);
 			tbl
@@ -16,7 +28,7 @@ exports.up = function(knex) {
 				.unsigned()
 				.notNullable()
 				.references('id')
-				.inTable('tickets');
+				.inTable('recipes');
 
 			tbl.string('name', 128).notNullable();
 
