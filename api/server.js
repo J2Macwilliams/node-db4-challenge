@@ -2,7 +2,7 @@ const express = require('express');
 const helmet = require('helmet');
 
 // Require router
-const recipeRouter = require('');
+const recipeRouter = require('../recipes/recipeRouter');
 
 const server = express();
 server.use(helmet());
