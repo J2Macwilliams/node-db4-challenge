@@ -1,14 +1,24 @@
 const db = require('../data/dbConfig.js');
 module.exports = {
-get,
+getRecipes,
+getShoppingList,
+getInstructions,
 getById,
 add,
 update,
 remove,
 };
 
-function get() {
+function getRecipes() {
 return db('recipes');
+}
+
+function getShoppingList(recipe_id) {
+    return db('recipes')
+}
+
+function getInstructions(recipe_id) {
+    return db('recipes')
 }
 
 function getById(id) {
