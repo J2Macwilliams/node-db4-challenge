@@ -19,36 +19,44 @@ exports.up = function(knex) {
 				.unsigned()
 				.notNullable()
 				.references('id')
-				.inTable('recipes');
+				.inTable('recipes')
+				.onDelete("CASCADE") // CASCADE, RESTRICT, DO NOTHING, SET NULL,
+                .onUpdate("CASCADE");
 		})
 		.createTable('recipe_detail', tbl => {
-			tbl.primary(['recipes_id', 'ingredients_id', 'instruction_id']);
+			tbl.increments();
 			tbl
 				.integer('recipes_id')
 				.unsigned()
 				.notNullable()
 				.references('id')
-				.inTable('recipes');
+				.inTable('recipes')
+				.onDelete("CASCADE") // CASCADE, RESTRICT, DO NOTHING, SET NULL,
+                .onUpdate("CASCADE");
 
-			tbl.string('recipe_name', 128).notNullable().unique().index();
+			tbl.string('recipe_name', 128).notNullable().index();
 
 			tbl
 				.integer('ingredients_id')
 				.unsigned()
 				.notNullable()
 				.references('id')
-				.inTable('ingredients');
+				.inTable('ingredients')
+				.onDelete("CASCADE") // CASCADE, RESTRICT, DO NOTHING, SET NULL,
+                .onUpdate("CASCADE");
 
 			tbl.float('quantity', 255).notNullable();
 
 			tbl.string('measurement_unit', 255).notNullable();
 
 			tbl
-				.integer('instructions_id')
+				.integer('instruction_id')
 				.unsigned()
 				.notNullable()
 				.references('id')
-				.inTable('instructions');
+				.inTable('instructions')
+				.onDelete("CASCADE") // CASCADE, RESTRICT, DO NOTHING, SET NULL,
+                .onUpdate("CASCADE");
 		});
 };
 
